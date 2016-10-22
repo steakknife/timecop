@@ -22,7 +22,7 @@ $ gem specific_install github.com/steakknife/timecop
 ```
 
 ## INTEROPERABILITY 
-### **Caution** ☢️ when using Ruby *and* Rails time/date methods together
+### ☢️ **Caution** ☢️ when using Ruby *and* Rails time/date methods together
 
 When using Timecop, don't mix/match Ruby **and** Rails time/date calendaring methods (see below), or problems will ensue. 
 
