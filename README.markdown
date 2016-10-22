@@ -28,7 +28,7 @@ When using Timecop, don't mix/match Ruby **and** Rails time/date calendaring met
 
 ### TL;DR - Recommmendation
 
-_Use all **Ruby** *or* all **Rails** methods (see below), but **not both.**_
+_Use **all Ruby** *or* **all Rails** methods (see below), but **not both.**_
 
 #### Ruby (Timecop mocks all these but `Time.zone`)
   - `Date#today`
