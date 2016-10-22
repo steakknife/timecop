@@ -117,7 +117,7 @@ sleep(10)
 new_time == Time.now # ==> false
 ```
 
-### Timecop.scale
+### `Timecop.scale`
 
 Let's say you want to test a "live" integration wherein entire days could pass by
 in minutes while you're able to simulate "real" activity. For example, one such use case
