@@ -112,7 +112,7 @@ config.after_initialize do
 end
 ```
 
-### The difference between Timecop.freeze and Timecop.travel
+### The difference between `Timecop.freeze` and `Timecop.travel`
 
 freeze is used to statically mock the concept of now. As your program executes,
 `Time.now` will not change unless you make subsequent calls into the Timecop API.
@@ -169,10 +169,14 @@ Timecop.freeze
 # => Timecop::SafeModeException: Safe mode is enabled, only calls passing a block are allowed.
 ```
 
-## Contribute
+## Credit
 
-timecop is maintained by [travisjeffery](http://github.com/travisjeffery), and
-was created by [jtrupiano](https://github.com/jtrupiano).
+- This timecop fork semi-maintained by [steakknife](https://github.com/steakknife).
+- timecop was previously maintained by [travisjeffery](https://github.com/travisjeffery).
+- timecop was created by [jtrupiano](https://github.com/jtrupiano).
+
+
+## Contribute
 
 Here's the most direct way to get your work merged into the project.
 
