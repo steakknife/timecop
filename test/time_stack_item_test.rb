@@ -193,11 +193,13 @@ class TestTimeStackItem < Minitest::Test
   end
 
   def test_timezones_apply_dates
-    Time.zone = "Central Time (US & Canada)"
-    time = Time.zone.local(2013,1,3)
+    make_system_timezone_utc do
+      Time.zone = "Central Time (US & Canada)"
+      time = Time.zone.local(2013,1,3)
 
-    Timecop.freeze(time) do
-      assert_equal time.to_date, Time.now.to_date
+      Timecop.freeze(time) do
+        assert_equal time.to_date, Time.now.to_date
+      end
     end
   end
 
@@ -286,5 +288,14 @@ class TestTimeStackItem < Minitest::Test
       now = DateTime.now
       assert_equal dt, now, "#{dt.to_f}, #{now.to_f}"
     end
+  end
+
+private
+
+  def make_system_timezone_utc(&block)
+    old, ENV['TZ'] = ENV['TZ'], 'UTC'
+    yield
+  ensure
+    ENV['TZ'] = old
   end
 end
