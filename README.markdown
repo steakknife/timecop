@@ -12,7 +12,7 @@ A gem providing "time travel" and "time freezing" capabilities, making it dead s
 
 ## FEATURES
 
-- 🆕 Thread safety `Timecop.thread_safe = true` (default: `false`) Important for threaded servers and testing. 
+- 🆕 Thread safety `Timecop.thread_safe = true` (default: `false`) Important for threaded servers and testing. (Credit: [ZenDesk](https://zendesk.com))
 - Freeze time to a specific point.
 - Travel back to a specific point in time, but allow time to continue moving forward from there.
 - Scale time by a given scaling factor that will cause time to move at an accelerated pace.
