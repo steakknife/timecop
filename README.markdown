@@ -17,13 +17,13 @@ A gem providing "time travel" and "time freezing" capabilities, making it dead s
 - Travel back to a specific point in time, but allow time to continue moving forward from there.
 - Scale time by a given scaling factor that will cause time to move at an accelerated pace.
 - No dependencies, can be used with _any_ ruby project
-- Timecop api allows arguments to be passed into #freeze and #travel as one of the following:
-  - Time instance
-  - DateTime instance
-  - Date instance
+- Timecop api allows arguments to be passed into `#freeze` and `#travel` as one of the following:
+  - `Time` instance
+  - `DateTime` instance
+  - `Date` instance
   - individual arguments (year, month, day, hour, minute, second)
-  - a single integer argument that is interpreted as an offset in seconds from Time.now
-- Nested calls to Timecop#travel and Timecop#freeze are supported -- each block will maintain its interpretation of now.
+  - a single integer argument that is interpreted as an offset in seconds from `Time.now`
+- Nested calls to `Timecop#travel` and `Timecop#freeze` are supported -- each block will maintain its interpretation of now.
 - Works with regular Ruby projects, and Ruby on Rails projects
 - **Caution** ☢️ When using Timecop, don't mix/match Ruby **and** Rails calendaring methods, or problems will ensue. Use all one *or* the other, but **not both.**
   - \* Mocked (patched) by timecop
@@ -99,9 +99,9 @@ end
 ### The difference between Timecop.freeze and Timecop.travel
 
 freeze is used to statically mock the concept of now. As your program executes,
-Time.now will not change unless you make subsequent calls into the Timecop API.
+`Time.now` will not change unless you make subsequent calls into the Timecop API.
 travel, on the other hand, computes an offset between what we currently think
-Time.now is (recall that we support nested traveling) and the time passed in.
+`Time.now` is (recall that we support nested traveling) and the time passed in.
 It uses this offset to simulate the passage of time.  To demonstrate, consider
 the following code snippets:
 
@@ -136,7 +136,7 @@ Time.now
 
 See [#42](https://github.com/travisjeffery/timecop/pull/42) for more information, thanks to Ken Mayer, David Holcomb, and Pivotal Labs.
 
-### Timecop.safe_mode
+### `Timecop.safe_mode`
 
 Safe mode forces you to use Timecop with the block syntax since it always puts time back the way it was. If you are running in safe mode and use Timecop without the block syntax `Timecop::SafeModeException` will be raised to tell the user they are not being safe.
 
