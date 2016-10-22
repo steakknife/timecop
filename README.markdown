@@ -26,29 +26,22 @@ A gem providing "time travel" and "time freezing" capabilities, making it dead s
 - Nested calls to `Timecop#travel` and `Timecop#freeze` are supported -- each block will maintain its interpretation of now.
 - Works with regular Ruby projects, and Ruby on Rails projects
 - **Caution** ☢️ When using Timecop, don't mix/match Ruby **and** Rails calendaring methods, or problems will ensue. Use all one *or* the other, but **not both.**
-  - \* Mocked (patched) by timecop
-  - Ruby
-    - `Date`
-      - `#today`\*
-      - `#strptime`\*
-      - `#parse`\*
-    - `Time`
-      - `#new`\*
-      - `#now`\*
-      - `.zone`
-    - `DateTime`
-      - `#now`\*
-      - `#parse`\*
-  - Rails
-    - `Date`
-      - `#current`
-      - `#tomorrow`
-      - `#yesterday`
-    - `Time`
-      - `#current`
-      - `#zone`
-    - `DateTime`
-      - `#current`
+  - Ruby (Timecop mocks all these but `Time.zone`)
+    - `Date#today`
+    - `Date#strptime`
+    - `Date#parse`
+    - `Time#new`
+    - `Time#now`
+    - `DateTime#now`
+    - `DateTime#parse`
+    - `Time.zone` (not mocked)
+  - Rails (Timecop doesn't touch any these directly)
+    - `Date#current`
+    - `Date#tomorrow`
+    - `Date#yesterday`
+    - `Time#current`
+    - `Time#zone`
+    - `DateTime#current`
 
 ## USAGE
 
