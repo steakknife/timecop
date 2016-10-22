@@ -4,7 +4,7 @@
 
 ## DESCRIPTION
 
-A gem providing "time travel" and "time freezing" capabilities, making it dead simple to test time-dependent code.  It provides a unified method to mock Time.now, Date.today, and DateTime.now in a single call.
+A gem providing "time travel" and "time freezing" capabilities, making it dead simple to test time-dependent code.  It provides a unified method to mock `Time.now`, `Date.today`, and `DateTime.now` (Ruby methods, not Rails/ActiveSupport) in a single call.
 
 ## INSTALL
 ### Bundler (preferred)
