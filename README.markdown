@@ -7,8 +7,48 @@
 A gem providing "time travel" and "time freezing" capabilities, making it dead simple to test time-dependent code.  It provides a unified method to mock Time.now, Date.today, and DateTime.now in a single call.
 
 ## INSTALL
+### Bundler (preferred)
+```ruby
+# Gemfile
+source 'https://rubygems.org'
+git_source(:github) { |repo_name| "https://github.com/#{repo_name}.git" } # bundler < 2.x security
+# ...
+gem 'timecop', github: 'steakknife/timecop'
+```
+### RubyGems
+```shell
+$ gem install specific_install
+$ gem specific_install github.com/steakknife/timecop
+```
 
-`gem install timecop`
+## INTEROPERABILITY 
+### **Caution** ☢️ when using Ruby *and* Rails time/date methods together
+
+When using Timecop, don't mix/match Ruby **and** Rails time/date calendaring methods (see below), or problems will ensue. 
+
+### TL;DR - Recommmendation
+
+_Use all **Ruby** *or* all **Rails** methods (see below), but **not both.**_
+
+#### Ruby (Timecop mocks all these but `Time.zone`)
+  - `Date#today`
+  - `Date#strptime`
+  - `Date#parse`
+  - `Time#new`
+  - `Time#now`
+  - `DateTime#now`
+  - `DateTime#parse`
+  - `Time.zone` (not mocked)
+  
+#### Rails (Timecop doesn't touch any these directly)
+  - `Date#current`
+  - `Date#tomorrow`
+  - `Date#yesterday`
+  - `Time#current`
+  - `Time#zone`
+  - `DateTime#current`
+
+
 
 ## FEATURES
 
@@ -25,23 +65,6 @@ A gem providing "time travel" and "time freezing" capabilities, making it dead s
   - a single integer argument that is interpreted as an offset in seconds from `Time.now`
 - Nested calls to `Timecop#travel` and `Timecop#freeze` are supported -- each block will maintain its interpretation of now.
 - Works with regular Ruby projects, and Ruby on Rails projects
-- **Caution** ☢️ When using Timecop, don't mix/match Ruby **and** Rails calendaring methods, or problems will ensue. Use all one *or* the other, but **not both.**
-  - Ruby (Timecop mocks all these but `Time.zone`)
-    - `Date#today`
-    - `Date#strptime`
-    - `Date#parse`
-    - `Time#new`
-    - `Time#now`
-    - `DateTime#now`
-    - `DateTime#parse`
-    - `Time.zone` (not mocked)
-  - Rails (Timecop doesn't touch any these directly)
-    - `Date#current`
-    - `Date#tomorrow`
-    - `Date#yesterday`
-    - `Time#current`
-    - `Time#zone`
-    - `DateTime#current`
 
 ## USAGE
 
