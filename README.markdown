@@ -12,6 +12,7 @@ A gem providing "time travel" and "time freezing" capabilities, making it dead s
 
 ## FEATURES
 
+- 🆕 Thread safety `Timecop.thread_safe = true` (default: `false`) Important for threaded servers and testing. 
 - Freeze time to a specific point.
 - Travel back to a specific point in time, but allow time to continue moving forward from there.
 - Scale time by a given scaling factor that will cause time to move at an accelerated pace.
@@ -24,6 +25,30 @@ A gem providing "time travel" and "time freezing" capabilities, making it dead s
   - a single integer argument that is interpreted as an offset in seconds from Time.now
 - Nested calls to Timecop#travel and Timecop#freeze are supported -- each block will maintain its interpretation of now.
 - Works with regular Ruby projects, and Ruby on Rails projects
+- **Caution** ☢️ When using Timecop, don't mix/match Ruby **and** Rails calendaring methods, or problems will ensue. Use all one *or* the other, but **not both.**
+  - \* Mocked (patched) by timecop
+  - Ruby
+    - `Date`
+      - `#today`\*
+      - `#strptime`\*
+      - `#parse`\*
+    - `Time`
+      - `#new`\*
+      - `#now`\*
+      - `.zone`
+    - `DateTime`
+      - `#now`\*
+      - `#parse`\*
+  - Rails
+    - `Date`
+      - `#current`
+      - `#tomorrow`
+      - `#yesterday`
+    - `Time`
+      - `#current`
+      - `#zone`
+    - `DateTime`
+      - `#current`
 
 ## USAGE
 
